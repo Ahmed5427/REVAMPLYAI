@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Operational Assessment — Revamply</title>
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    .page-hero { padding: 12rem 0 6rem; position: relative; overflow: hidden; }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 50% at 0% 50%, rgba(62,139,141,0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .assess-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--s6);
+      margin-top: var(--s6);
+    }
+    .assess-area {
+      padding: var(--s5);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      background: var(--bg-card);
+      transition: all 0.3s var(--ease-out);
+    }
+    .assess-area:hover {
+      border-color: var(--border-mid);
+      transform: translateY(-3px);
+    }
+    .assess-area-num {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      color: var(--gold-dim);
+      margin-bottom: var(--s2);
+      text-transform: uppercase;
+    }
+    .assess-area h3 {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: var(--s2);
+    }
+    .assess-area p { font-size: 0.85rem; color: var(--gray); line-height: 1.6; }
+
+    .report-section {
+      padding: var(--s9) 0;
+      background: var(--bg-2);
+    }
+    .report-box {
+      background: var(--bg-3);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: var(--s6);
+      position: relative;
+      overflow: hidden;
+      max-width: 700px;
+      margin: var(--s5) auto 0;
+    }
+    .report-box::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--teal), transparent);
+    }
+    .cta-form-section {
+      padding: var(--s9) 0;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .assess-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav scrolled" id="mainNav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">REVAM<span>P</span>LY</a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="revamp-method.html" class="nav-link">REVAMP</a>
+        <a href="assessment.html" class="nav-link active">Assessment</a>
+        <a href="exit-ready.html" class="nav-link">Exit Ready</a>
+        <a href="playbook.html" class="nav-link">Playbook</a>
+        <a href="#" class="nav-link">About</a>
+        <a href="#" class="nav-cta">Book a Call</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="overline reveal">Service</div>
+    <h1 class="display-xl reveal" style="max-width: 800px; margin-bottom: var(--s4);">
+      Operational <em class="italic-display">Assessment</em>
+    </h1>
+    <p class="body-lg reveal" style="max-width: 540px;">
+      Discover how your business could run more efficiently. The Revamply Operational Assessment identifies how your company currently operates and where modernization can significantly improve efficiency.
+    </p>
+    <br>
+    <div class="reveal">
+      <a href="#request" class="btn btn-primary">Request Your Assessment</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="overline reveal">What We Examine</div>
+    <h2 class="display-md reveal">A Structured Review of Your Operations</h2>
+    <div class="assess-grid">
+      <div class="assess-area reveal">
+        <div class="assess-area-num">01</div>
+        <h3>Customer Communication</h3>
+        <p>How leads and customers are managed from first contact through to delivery and follow-up. Where response times slow and where automation can accelerate.</p>
+      </div>
+      <div class="assess-area reveal">
+        <div class="assess-area-num">02</div>
+        <h3>Lead Management</h3>
+        <p>How leads enter your business, how they are tracked, nurtured, and converted. Identifying friction in the sales and follow-up process.</p>
+      </div>
+      <div class="assess-area reveal">
+        <div class="assess-area-num">03</div>
+        <h3>Internal Operations</h3>
+        <p>Day-to-day workflows across departments. Where manual tasks consume team time that could be automated or streamlined.</p>
+      </div>
+      <div class="assess-area reveal">
+        <div class="assess-area-num">04</div>
+        <h3>Scheduling & Task Management</h3>
+        <p>How appointments, tasks, and coordination happen internally. Where handoffs break down and bottlenecks form.</p>
+      </div>
+      <div class="assess-area reveal">
+        <div class="assess-area-num">05</div>
+        <h3>Software Infrastructure</h3>
+        <p>The tools currently in use — how well they integrate, where data gets stuck, and what modern alternatives could unify operations.</p>
+      </div>
+      <div class="assess-area reveal">
+        <div class="assess-area-num">06</div>
+        <h3>Reporting & Visibility</h3>
+        <p>How leadership understands business performance. Where visibility is missing and decisions are made without clear data.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="report-section">
+  <div class="container" style="text-align: center;">
+    <div class="overline reveal" style="justify-content: center;">The Output</div>
+    <h2 class="display-md reveal">What You Receive</h2>
+    <div class="report-box reveal">
+      <div class="label" style="margin-bottom: var(--s3);">// Structured Report</div>
+      <p class="body-md" style="margin-bottom: var(--s4);">
+        Following the review, Revamply provides a structured report outlining modernization opportunities and recommended improvements.
+      </p>
+      <ul class="styled-list" style="text-align: left;">
+        <li>Complete operational workflow review and documentation</li>
+        <li>Modernization opportunities mapped by priority and impact</li>
+        <li>Recommended system architecture for your business</li>
+        <li>Clear implementation roadmap with phased steps</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="cta-form-section" id="request">
+  <div class="container">
+    <div class="overline reveal" style="justify-content: center;">Get Started</div>
+    <h2 class="display-md reveal" style="margin-bottom: var(--s4);">
+      Request Your <em class="italic-display">Operational Assessment</em>
+    </h2>
+    <p class="body-lg reveal" style="max-width: 480px; margin: 0 auto var(--s5);">
+      Book a discovery conversation to explore how your business could operate more efficiently.
+    </p>
+    <div class="reveal">
+      <a href="#" class="btn btn-primary" style="padding: 1rem 2.5rem;">Request Operational Assessment</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">REVAM<span>P</span>LY</div>
+        <p class="footer-tagline">Modern Operating Systems for Established Businesses.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Navigate</div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="revamp-method.html">The REVAMP Method</a>
+          <a href="assessment.html">Assessment</a>
+          <a href="exit-ready.html">Exit Ready</a>
+          <a href="playbook.html">Playbook</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <div class="footer-links">
+          <a href="#">Book a Discovery Call</a>
+          <a href="mailto:hello@revamply.com">hello@revamply.com</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 Revamply. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20));
+gsap.utils.toArray('.reveal').forEach(el => {
+  gsap.fromTo(el,
+    { opacity: 0, y: 40 },
+    { opacity: 1, y: 0, duration: 0.85, ease: 'power3.out',
+      scrollTrigger: { trigger: el, start: 'top 83%', toggleActions: 'play none none none' } }
+  );
+});
+</script>
+</body>
+</html>
