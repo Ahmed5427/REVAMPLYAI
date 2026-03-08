@@ -19,18 +19,18 @@ const companies = [
     status: "Active",
   },
   {
-    year: "2023",
-    name: "CarConnective",
-    role: "Founder",
-    description: "Connected vehicle intelligence platform",
-    status: "Launching Soon",
-  },
-  {
     year: "2022",
     name: "RoomService AI",
     role: "Founder",
     description: "Hospitality guest communication platform — automated concierge at scale",
     status: "Active",
+  },
+  {
+    year: "2023",
+    name: "CarConnective",
+    role: "Founder",
+    description: "Connected vehicle intelligence platform — real-time fleet and buyer-intent data",
+    status: "Launching Soon",
   },
   {
     year: "2024",
@@ -41,127 +41,272 @@ const companies = [
   },
 ];
 
+const statusStyles: Record<string, string> = {
+  Active: "text-emerald-400/80 border-emerald-500/20 bg-emerald-500/[0.06]",
+  "Launching Soon": "text-accent/80 border-accent/20 bg-accent/[0.06]",
+  "In Development": "text-white/30 border-white/10 bg-white/[0.04]",
+};
+
 export default function Founder() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="founder" ref={ref} className="relative py-32 lg:py-40 bg-black overflow-hidden">
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+    <section
+      id="founder"
+      ref={ref}
+      className="relative py-32 lg:py-40 bg-black overflow-hidden"
+    >
+      <div className="section-line" />
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
-          {/* Left — Bio */}
-          <div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6 }}
-              className="text-accent text-xs uppercase tracking-widest font-medium mb-6"
-            >
-              The Founder
-            </motion.div>
+      {/* Ghost background text */}
+      <div
+        className="ghost-text absolute select-none pointer-events-none font-black"
+        style={{
+          fontSize: "clamp(6rem, 18vw, 22rem)",
+          lineHeight: 1,
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          whiteSpace: "nowrap",
+          opacity: 0.018,
+        }}
+      >
+        FOUNDER
+      </div>
 
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+
+        {/* Section header */}
+        <div className="mb-20 lg:mb-28">
+          <motion.div
+            initial={{ opacity: 0, x: -16 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6 }}
+            className="flex items-center gap-3 mb-8"
+          >
+            <span className="section-number">The Founder</span>
+          </motion.div>
+
+          <div className="grid lg:grid-cols-[1fr_1fr] gap-10 lg:gap-20 items-end">
             <motion.h2
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 36 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" as const }}
-              className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[0.95] tracking-tight mb-8"
+              transition={{ duration: 0.9, delay: 0.08, ease: [0.16, 1, 0.3, 1] as [number,number,number,number] }}
+              className="text-white font-black tracking-tight leading-[0.92]"
+              style={{ fontSize: "clamp(2.4rem, 5vw, 5rem)" }}
             >
-              Built by an Entrepreneur Who Builds{" "}
-              <span className="text-gradient-blue">Real Systems</span>
+              Built by an Operator{" "}
+              <span className="text-gradient-blue">Who Knows the Problem</span>
             </motion.h2>
 
-            {/* Photo placeholder */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={inView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.8, delay: 0.15 }}
-              className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden mb-8 glass border border-white/10"
-            >
-              <div className="absolute inset-0 flex flex-col items-center justify-center">
-                <div className="w-20 h-20 rounded-full bg-accent/20 border border-accent/30 flex items-center justify-center mb-4">
-                  <span className="text-3xl font-black text-accent">D</span>
-                </div>
-                <p className="text-white font-bold text-lg">Duncan MacDonald</p>
-                <p className="text-white/40 text-sm">Founder, Revamply</p>
-              </div>
-              {/* Decorative grid */}
-              <div className="absolute inset-0 grid-bg opacity-50" />
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
+            <motion.p
+              initial={{ opacity: 0, y: 24 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.25 }}
-              className="space-y-4"
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-white/35 leading-relaxed"
+              style={{ fontSize: "clamp(0.9rem, 1.1vw, 1rem)", lineHeight: 1.85 }}
             >
-              <p className="text-white/60 text-base leading-relaxed">
-                Duncan MacDonald is a multi-technology company founder who has spent years building
-                software platforms from scratch to solve real operational inefficiencies across
-                multiple industries.
-              </p>
-              <p className="text-white/60 text-base leading-relaxed">
-                Rather than consulting from the outside, Duncan has lived the challenge — bootstrapping
-                platforms that modernize how businesses actually operate, from automotive wholesale to
-                hospitality management.
-              </p>
-              <p className="text-white/60 text-base leading-relaxed">
-                Revamply is the culmination of those lessons: a consultancy that delivers not advice,
-                but <span className="text-white font-semibold">actual operational transformation</span>.
-              </p>
-            </motion.div>
+              Duncan MacDonald is a multi-company founder who has built software
+              platforms from scratch across automotive and hospitality industries.
+              Rather than consulting from the outside, he has lived the operational
+              challenge — bootstrapping systems that modernise how businesses actually run.
+            </motion.p>
           </div>
+        </div>
 
-          {/* Right — Timeline */}
-          <div className="pt-0 lg:pt-24">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-white/30 text-xs uppercase tracking-widest font-medium mb-8"
+        {/* Main content grid */}
+        <div className="grid lg:grid-cols-[480px_1fr] gap-16 lg:gap-24 items-start">
+
+          {/* Left — Portrait card */}
+          <motion.div
+            initial={{ opacity: 0, y: 32 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] as [number,number,number,number] }}
+          >
+            {/* Portrait placeholder */}
+            <div
+              className="relative w-full overflow-hidden mb-8"
+              style={{
+                aspectRatio: "4 / 5",
+                background: "rgba(255,255,255,0.02)",
+                border: "1px solid rgba(255,255,255,0.06)",
+              }}
             >
-              Companies Built
+              {/* Crosshair corner decorations */}
+              {["top-0 left-0", "top-0 right-0", "bottom-0 left-0", "bottom-0 right-0"].map((pos, i) => (
+                <div
+                  key={i}
+                  className={`absolute ${pos} w-5 h-5 pointer-events-none`}
+                  style={{
+                    borderTop: i < 2 ? "1px solid rgba(255,255,255,0.12)" : "none",
+                    borderBottom: i >= 2 ? "1px solid rgba(255,255,255,0.12)" : "none",
+                    borderLeft: i % 2 === 0 ? "1px solid rgba(255,255,255,0.12)" : "none",
+                    borderRight: i % 2 === 1 ? "1px solid rgba(255,255,255,0.12)" : "none",
+                  }}
+                />
+              ))}
+
+              {/* Monogram */}
+              <div className="absolute inset-0 flex flex-col items-center justify-center">
+                <div
+                  className="flex items-center justify-center rounded-full mb-5"
+                  style={{
+                    width: "72px",
+                    height: "72px",
+                    background: "rgba(59,130,246,0.08)",
+                    border: "1px solid rgba(59,130,246,0.2)",
+                  }}
+                >
+                  <span
+                    className="text-accent font-black"
+                    style={{ fontSize: "clamp(1.6rem, 3vw, 2.2rem)", lineHeight: 1 }}
+                  >
+                    D
+                  </span>
+                </div>
+                <p
+                  className="text-white font-bold mb-1"
+                  style={{ fontSize: "clamp(1.1rem, 1.8vw, 1.4rem)" }}
+                >
+                  Duncan MacDonald
+                </p>
+                <p
+                  className="text-white/30 font-mono"
+                  style={{ fontSize: "10px", letterSpacing: "0.35em", textTransform: "uppercase" }}
+                >
+                  Founder — Revamply
+                </p>
+              </div>
+
+              {/* Subtle scan-line texture */}
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255,255,255,0.012) 3px, rgba(255,255,255,0.012) 4px)",
+                }}
+              />
+            </div>
+
+            {/* Pull quote */}
+            <div
+              className="border-l-2 border-accent/40 pl-6"
+              style={{ borderLeftWidth: "2px" }}
+            >
+              <p
+                className="text-white/60 leading-relaxed mb-4"
+                style={{ fontSize: "clamp(0.85rem, 1.1vw, 1rem)", lineHeight: 1.85 }}
+              >
+                &ldquo;Revamply is the culmination of those lessons: not advice,
+                but{" "}
+                <span className="text-white font-semibold">actual operational transformation</span>
+                {" "}delivered by someone who has built it from the ground up.&rdquo;
+              </p>
+              <p
+                className="text-white/20 font-mono"
+                style={{ fontSize: "10px", letterSpacing: "0.3em", textTransform: "uppercase" }}
+              >
+                Duncan MacDonald
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Right — Companies built */}
+          <div>
+            <motion.div
+              initial={{ opacity: 0, x: 16 }}
+              animate={inView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="mb-10"
+            >
+              <p
+                className="text-white/20 font-mono mb-1"
+                style={{ fontSize: "9px", letterSpacing: "0.35em", textTransform: "uppercase" }}
+              >
+                Track Record
+              </p>
+              <p
+                className="text-white/20 font-mono"
+                style={{ fontSize: "9px", letterSpacing: "0.35em", textTransform: "uppercase" }}
+              >
+                {companies.length} companies founded across 2 industries
+              </p>
             </motion.div>
 
-            <div className="relative">
-              {/* Timeline line */}
-              <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-accent/50 via-white/10 to-transparent" />
-
-              <div className="space-y-8">
-                {companies.map((company, i) => (
-                  <motion.div
-                    key={company.name}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={inView ? { opacity: 1, x: 0 } : {}}
-                    transition={{ duration: 0.7, delay: 0.2 + i * 0.1, ease: "easeOut" as const }}
-                    className="pl-8 relative group"
+            {/* Company list */}
+            <div className="divide-y divide-white/[0.06]">
+              {companies.map((company, i) => (
+                <motion.div
+                  key={company.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={inView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.65, delay: 0.18 + i * 0.07, ease: "easeOut" }}
+                  className="group grid items-start py-7"
+                  style={{ gridTemplateColumns: "64px 1fr auto" }}
+                >
+                  {/* Year */}
+                  <p
+                    className="text-white/20 font-mono pt-0.5"
+                    style={{ fontSize: "11px", letterSpacing: "0.1em" }}
                   >
-                    {/* Dot */}
-                    <div className="absolute left-0 top-1.5 w-2 h-2 rounded-full bg-accent -translate-x-0.5 group-hover:scale-150 transition-transform duration-300" />
+                    {company.year}
+                  </p>
 
-                    <div className="flex items-start justify-between gap-4">
-                      <div className="flex-1">
-                        <div className="flex items-center gap-3 mb-1">
-                          <span className="text-white/30 text-xs font-mono">{company.year}</span>
-                          <span className="text-white font-bold text-lg">{company.name}</span>
-                        </div>
-                        <p className="text-white/40 text-sm leading-relaxed">{company.description}</p>
-                      </div>
-                      <span className={`shrink-0 text-xs px-2.5 py-1 rounded-full font-medium ${
-                        company.status === "Active"
-                          ? "bg-green-500/10 text-green-400 border border-green-500/20"
-                          : company.status === "Launching Soon"
-                          ? "bg-accent/10 text-accent border border-accent/20"
-                          : "bg-white/5 text-white/40 border border-white/10"
-                      }`}>
-                        {company.status}
-                      </span>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
+                  {/* Name + description */}
+                  <div className="pr-6">
+                    <p
+                      className="text-white font-bold mb-1.5 group-hover:text-accent transition-colors duration-300"
+                      style={{ fontSize: "clamp(1rem, 1.4vw, 1.15rem)" }}
+                    >
+                      {company.name}
+                    </p>
+                    <p
+                      className="text-white/35 leading-relaxed"
+                      style={{ fontSize: "clamp(0.8rem, 0.95vw, 0.875rem)", lineHeight: 1.7 }}
+                    >
+                      {company.description}
+                    </p>
+                  </div>
+
+                  {/* Status badge */}
+                  <span
+                    className={`shrink-0 font-mono border rounded-full px-3 py-1 ${statusStyles[company.status] || statusStyles["In Development"]}`}
+                    style={{ fontSize: "9px", letterSpacing: "0.2em", textTransform: "uppercase" }}
+                  >
+                    {company.status}
+                  </span>
+                </motion.div>
+              ))}
             </div>
+
+            {/* Credential bar */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={inView ? { opacity: 1 } : {}}
+              transition={{ duration: 0.8, delay: 0.65 }}
+              className="mt-10 pt-8 border-t border-white/[0.06] grid grid-cols-3 gap-6"
+            >
+              {[
+                { value: "5+", label: "Companies Built" },
+                { value: "2", label: "Industries" },
+                { value: "7yrs", label: "Building Operators" },
+              ].map((stat) => (
+                <div key={stat.label}>
+                  <p
+                    className="text-white font-black mb-1"
+                    style={{ fontSize: "clamp(1.4rem, 2.5vw, 2rem)" }}
+                  >
+                    {stat.value}
+                  </p>
+                  <p
+                    className="text-white/25 font-mono"
+                    style={{ fontSize: "9px", letterSpacing: "0.25em", textTransform: "uppercase" }}
+                  >
+                    {stat.label}
+                  </p>
+                </div>
+              ))}
+            </motion.div>
           </div>
         </div>
       </div>

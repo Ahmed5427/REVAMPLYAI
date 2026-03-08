@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import dynamic from "next/dynamic";
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
@@ -16,7 +17,7 @@ import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
 
-// Dynamically import heavy / client-only components
+// Client-only components
 const ScrollAnimation = dynamic(() => import("@/components/ScrollAnimation"), {
   ssr: false,
   loading: () => (
@@ -34,27 +35,43 @@ const ScrollAnimation = dynamic(() => import("@/components/ScrollAnimation"), {
 });
 
 const Cursor = dynamic(() => import("@/components/Cursor"), { ssr: false });
+const Loader = dynamic(() => import("@/components/Loader"), { ssr: false });
+const ScrollProgress = dynamic(() => import("@/components/ScrollProgress"), { ssr: false });
 
 export default function Home() {
+  const [loaderDone, setLoaderDone] = useState(false);
+
   return (
-    <SmoothScroll>
-      <Cursor />
-      <main className="bg-black min-h-screen">
-        <Navigation />
-        <Hero />
-        <ScrollAnimation />
-        <Problem />
-        <WhatRevamplyDoes />
-        <Founder />
-        <TechPlatforms />
-        <RevampMethod />
-        <Playbook />
-        <Services />
-        <IdealClients />
-        <Outcomes />
-        <FinalCTA />
-        <Footer />
-      </main>
-    </SmoothScroll>
+    <>
+      {/* Page loader — covers until animation completes */}
+      {!loaderDone && <Loader onComplete={() => setLoaderDone(true)} />}
+
+      <SmoothScroll>
+        <Cursor />
+        <ScrollProgress />
+        <main
+          className="bg-black min-h-screen"
+          style={{
+            opacity: loaderDone ? 1 : 0,
+            transition: "opacity 0.4s ease",
+          }}
+        >
+          <Navigation />
+          <Hero />
+          <ScrollAnimation />
+          <Problem />
+          <WhatRevamplyDoes />
+          <Founder />
+          <TechPlatforms />
+          <RevampMethod />
+          <Playbook />
+          <Services />
+          <IdealClients />
+          <Outcomes />
+          <FinalCTA />
+          <Footer />
+        </main>
+      </SmoothScroll>
+    </>
   );
 }

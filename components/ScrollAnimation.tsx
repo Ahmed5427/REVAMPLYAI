@@ -239,6 +239,25 @@ export default function ScrollAnimation() {
           }}
         />
 
+        {/* Per-chapter color tint overlay */}
+        <div
+          className="absolute inset-0 pointer-events-none z-[11] transition-all duration-[1200ms] ease-out"
+          style={{
+            background: [
+              // Chapter 1: cool blue-grey (fragmented, cold)
+              "rgba(20,20,40,0.18)",
+              // Chapter 2: slight amber (scrutiny, audit)
+              "rgba(40,30,10,0.12)",
+              // Chapter 3: deep blue (architecture, precision)
+              "rgba(10,20,50,0.15)",
+              // Chapter 4: purple (build, energy)
+              "rgba(30,15,50,0.12)",
+              // Chapter 5: clear blue (outcome, clarity)
+              "rgba(5,20,60,0.10)",
+            ][activeChapter],
+          }}
+        />
+
         {/* Loading overlay */}
         {!loaded && (
           <div className="absolute inset-0 z-50 flex flex-col items-center justify-center bg-black">
