@@ -147,43 +147,45 @@ export default function Founder() {
                 />
               ))}
 
-              {/* Monogram */}
-              <div className="absolute inset-0 flex flex-col items-center justify-center">
-                <div
-                  className="flex items-center justify-center rounded-full mb-5"
-                  style={{
-                    width: "72px",
-                    height: "72px",
-                    background: "rgba(59,130,246,0.08)",
-                    border: "1px solid rgba(59,130,246,0.2)",
-                  }}
-                >
-                  <span
-                    className="text-accent font-black"
-                    style={{ fontSize: "clamp(1.6rem, 3vw, 2.2rem)", lineHeight: 1 }}
-                  >
-                    D
-                  </span>
-                </div>
+              {/* Frame 80 — atmospheric portrait background */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/frames/frame-0080.jpg"
+                alt=""
+                aria-hidden="true"
+                className="absolute inset-0 w-full h-full object-cover"
+                style={{ opacity: 0.32 }}
+              />
+
+              {/* Dark gradient overlay */}
+              <div
+                className="absolute inset-0"
+                style={{
+                  background: "linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.55) 100%)",
+                }}
+              />
+
+              {/* Name label — bottom */}
+              <div className="absolute bottom-7 left-7 right-7 z-10">
                 <p
                   className="text-white font-bold mb-1"
-                  style={{ fontSize: "clamp(1.1rem, 1.8vw, 1.4rem)" }}
+                  style={{ fontSize: "clamp(1rem, 1.6vw, 1.2rem)" }}
                 >
                   Duncan MacDonald
                 </p>
                 <p
                   className="text-white/30 font-mono"
-                  style={{ fontSize: "10px", letterSpacing: "0.35em", textTransform: "uppercase" }}
+                  style={{ fontSize: "9px", letterSpacing: "0.35em", textTransform: "uppercase" }}
                 >
                   Founder — Revamply
                 </p>
               </div>
 
-              {/* Subtle scan-line texture */}
+              {/* Scan-line texture */}
               <div
                 className="absolute inset-0 pointer-events-none"
                 style={{
-                  backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255,255,255,0.012) 3px, rgba(255,255,255,0.012) 4px)",
+                  backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255,255,255,0.008) 3px, rgba(255,255,255,0.008) 4px)",
                 }}
               />
             </div>

@@ -44,6 +44,28 @@ export default function Problem() {
     <section id="problem" ref={ref} className="relative py-32 lg:py-40 bg-black overflow-hidden">
       <div className="section-line" />
 
+      {/* Frame 25 — right-side atmospheric accent */}
+      <div
+        className="absolute right-0 top-0 bottom-0 pointer-events-none overflow-hidden"
+        style={{ width: "42%", zIndex: 0 }}
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/frames/frame-0025.jpg"
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ opacity: 0.07 }}
+        />
+        {/* Fade left edge */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6) 40%, rgba(0,0,0,0.15) 100%)",
+          }}
+        />
+      </div>
+
       {/* Ghost decoration */}
       <div
         className="ghost-text"

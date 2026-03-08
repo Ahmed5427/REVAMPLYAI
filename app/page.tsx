@@ -16,6 +16,7 @@ import Outcomes from "@/components/Outcomes";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
+import FrameStrip from "@/components/FrameStrip";
 
 // Client-only components
 const ScrollAnimation = dynamic(() => import("@/components/ScrollAnimation"), {
@@ -58,14 +59,18 @@ export default function Home() {
         >
           <Navigation />
           <Hero />
+          <FrameStrip startFrame={0} endFrame={24} />
           <ScrollAnimation />
+          <FrameStrip startFrame={25} endFrame={76} reverse />
           <Problem />
           <WhatRevamplyDoes />
+          <FrameStrip startFrame={51} endFrame={102} />
           <Founder />
           <TechPlatforms />
           <RevampMethod />
           <Playbook />
           <Services />
+          <FrameStrip startFrame={77} endFrame={127} reverse />
           <IdealClients />
           <Outcomes />
           <FinalCTA />

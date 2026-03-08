@@ -26,7 +26,26 @@ export default function FinalCTA() {
       ref={ref}
       className="relative min-h-screen flex items-center justify-center bg-black overflow-hidden"
     >
-      {/* Background glow */}
+      {/* Frame 127 — cinematic closing frame */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/frames/frame-0128.jpg"
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+        style={{ opacity: 0.22, zIndex: 0 }}
+      />
+
+      {/* Dark overlay */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: "radial-gradient(ellipse 90% 90% at 50% 50%, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.88) 100%)",
+          zIndex: 1,
+        }}
+      />
+
+      {/* Blue glow on top */}
       <div
         ref={glowRef}
         className="absolute pointer-events-none"
@@ -37,23 +56,16 @@ export default function FinalCTA() {
           width: "700px",
           height: "700px",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(59,130,246,0.14) 0%, rgba(59,130,246,0.04) 45%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(59,130,246,0.16) 0%, rgba(59,130,246,0.05) 45%, transparent 70%)",
           filter: "blur(40px)",
-        }}
-      />
-
-      {/* Vignette */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: "radial-gradient(ellipse 80% 80% at center, transparent 30%, black 100%)",
+          zIndex: 2,
         }}
       />
 
       {/* Top fade */}
-      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black to-transparent pointer-events-none" />
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black to-transparent pointer-events-none" style={{ zIndex: 2 }} />
 
-      <div className="relative z-10 max-w-5xl mx-auto px-6 lg:px-12 py-32 text-center">
+      <div className="relative max-w-5xl mx-auto px-6 lg:px-12 py-32 text-center" style={{ zIndex: 3 }}>
 
         {/* Availability badge */}
         <motion.div
