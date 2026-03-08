@@ -3,42 +3,36 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
-const systems = [
+const capabilities = [
   {
+    number: "01",
     title: "Automated Customer Communication",
-    description: "Every customer touchpoint automated and personalized at scale.",
-    icon: "💬",
-    color: "from-blue-500/20 to-transparent",
+    description: "Every customer touchpoint automated and personalised at scale.",
   },
   {
+    number: "02",
     title: "Streamlined Workflows",
     description: "Multi-step business processes redesigned for maximum efficiency.",
-    icon: "⚡",
-    color: "from-purple-500/20 to-transparent",
   },
   {
+    number: "03",
     title: "Operational Dashboards",
-    description: "Real-time visibility into every aspect of your business performance.",
-    icon: "📊",
-    color: "from-green-500/20 to-transparent",
+    description: "Real-time visibility into every aspect of business performance.",
   },
   {
+    number: "04",
     title: "Integrated Business Software",
-    description: "All your tools connected into a unified, coherent operating stack.",
-    icon: "🔗",
-    color: "from-orange-500/20 to-transparent",
+    description: "All tools connected into a unified, coherent operating stack.",
   },
   {
+    number: "05",
     title: "Intelligent Customer Response",
     description: "AI-powered systems that respond, follow up, and convert automatically.",
-    icon: "🤖",
-    color: "from-pink-500/20 to-transparent",
   },
   {
+    number: "06",
     title: "Cross-Department Automation",
-    description: "Automation embedded across every department, not just one area.",
-    icon: "🔄",
-    color: "from-cyan-500/20 to-transparent",
+    description: "Automation embedded across every department — not just one area.",
   },
 ];
 
@@ -48,97 +42,116 @@ export default function WhatRevamplyDoes() {
 
   return (
     <section id="what-we-do" ref={ref} className="relative py-32 lg:py-40 bg-black overflow-hidden">
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+      <div className="section-line" />
 
-      {/* Background accent */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full"
-        style={{ background: "radial-gradient(circle, rgba(59,130,246,0.04) 0%, transparent 70%)", pointerEvents: "none" }}
+      <div
+        className="absolute pointer-events-none"
+        style={{
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%,-50%)",
+          width: "700px",
+          height: "700px",
+          borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(59,130,246,0.04) 0%, transparent 70%)",
+        }}
       />
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Header */}
-        <div className="grid lg:grid-cols-2 gap-16 items-start mb-20">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+        {/* Header — two column */}
+        <div className="grid lg:grid-cols-[1fr_1fr] gap-12 lg:gap-20 items-start mb-20 lg:mb-28">
           <div>
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
+              initial={{ opacity: 0, x: -16 }}
+              animate={inView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.6 }}
-              className="text-accent text-xs uppercase tracking-widest font-medium mb-6"
+              className="flex items-center gap-3 mb-8"
             >
-              Our Approach
+              <span className="section-number">Our Approach</span>
             </motion.div>
 
             <motion.h2
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 36 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" as const }}
-              className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[0.95] tracking-tight"
+              transition={{ duration: 0.9, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+              className="text-white font-black tracking-tight leading-[0.92]"
+              style={{ fontSize: "clamp(2.4rem, 5vw, 5rem)" }}
             >
               We Redesign the Systems That{" "}
-              <span className="text-gradient-blue">Run Businesses</span>
+              <span className="text-gradient-blue">Run Your Business</span>
             </motion.h2>
           </div>
 
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 28 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="pt-2 lg:pt-16"
+            transition={{ duration: 0.8, delay: 0.18 }}
+            className="lg:pt-16"
           >
-            <p className="text-white/50 text-lg leading-relaxed mb-6">
-              Revamply analyzes how your company currently operates and redesigns the systems
-              that power your business. Rather than simply recommending software tools, we design
-              complete operational systems that integrate modern automation, intelligent workflows,
-              and connected infrastructure.
+            <p
+              className="text-white/40 leading-relaxed mb-6"
+              style={{ fontSize: "clamp(0.9rem, 1.15vw, 1rem)", lineHeight: 1.85 }}
+            >
+              Revamply analyses how your company currently operates and redesigns the systems
+              that power it. Rather than recommending software tools, we design complete operational
+              systems that integrate modern automation, intelligent workflows, and connected infrastructure.
             </p>
-            <p className="text-white font-semibold text-lg">
-              Objective: Create a business that runs more efficiently and scales more easily.
-            </p>
+            <div className="flex items-start gap-4">
+              <div className="w-px h-8 bg-accent/50 shrink-0 mt-1" />
+              <p
+                className="text-white font-semibold"
+                style={{ fontSize: "clamp(0.9rem, 1.15vw, 1rem)" }}
+              >
+                Objective: Create a business that operates more efficiently and scales more easily.
+              </p>
+            </div>
           </motion.div>
         </div>
 
-        {/* Systems grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {systems.map((system, i) => (
+        {/* Capabilities grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/[0.06]">
+          {capabilities.map((cap, i) => (
             <motion.div
-              key={system.title}
-              initial={{ opacity: 0, y: 40 }}
+              key={cap.number}
+              initial={{ opacity: 0, y: 24 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: i * 0.08, ease: "easeOut" as const }}
-              className="group relative p-6 rounded-2xl glass border border-white/[0.06] hover:border-white/[0.15] transition-all duration-500 overflow-hidden cursor-default"
+              transition={{ duration: 0.65, delay: 0.06 + i * 0.06, ease: "easeOut" }}
+              className="group relative bg-black p-8 hover:bg-white/[0.025] transition-all duration-400 cursor-default"
             >
-              {/* BG gradient on hover */}
               <div
-                className={`absolute inset-0 bg-gradient-to-br ${system.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
-              />
-
-              <div className="relative z-10">
-                <div className="text-3xl mb-4 transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1 inline-block">
-                  {system.icon}
-                </div>
-                <h3 className="text-white font-bold text-lg mb-2 leading-tight">
-                  {system.title}
-                </h3>
-                <p className="text-white/40 text-sm leading-relaxed group-hover:text-white/60 transition-colors duration-300">
-                  {system.description}
-                </p>
+                className="text-white/15 font-mono mb-5 group-hover:text-accent/40 transition-colors duration-300"
+                style={{ fontSize: "11px", letterSpacing: "0.15em" }}
+              >
+                {cap.number}
               </div>
+              <h3
+                className="text-white font-bold mb-3 leading-tight"
+                style={{ fontSize: "clamp(0.95rem, 1.3vw, 1.1rem)" }}
+              >
+                {cap.title}
+              </h3>
+              <p
+                className="text-white/35 leading-relaxed group-hover:text-white/50 transition-colors duration-300"
+                style={{ fontSize: "clamp(0.8rem, 0.95vw, 0.875rem)", lineHeight: 1.75 }}
+              >
+                {cap.description}
+              </p>
+              {/* Bottom accent on hover */}
+              <div className="absolute bottom-0 left-8 right-8 h-px bg-accent scale-x-0 group-hover:scale-x-100 transition-transform duration-400 origin-left" />
             </motion.div>
           ))}
         </div>
 
-        {/* Bottom CTA */}
+        {/* CTA */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="mt-16 text-center"
+          transition={{ duration: 0.7, delay: 0.55 }}
+          className="mt-14 flex justify-center"
         >
           <button
-            onClick={() => {
-              document.querySelector("#services")?.scrollIntoView({ behavior: "smooth" });
-            }}
-            className="group inline-flex items-center gap-3 px-8 py-4 rounded-full glass border border-white/10 hover:border-accent/50 text-white font-semibold text-sm transition-all duration-300 hover:shadow-[0_0_30px_rgba(59,130,246,0.15)]"
+            onClick={() => document.querySelector("#services")?.scrollIntoView({ behavior: "smooth" })}
+            className="group inline-flex items-center gap-3 px-7 py-3.5 rounded-full border border-white/10 text-white/60 hover:text-white hover:border-white/25 text-sm font-medium transition-all duration-300"
           >
             View Our Services
             <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>

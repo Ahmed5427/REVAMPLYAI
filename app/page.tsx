@@ -14,38 +14,47 @@ import IdealClients from "@/components/IdealClients";
 import Outcomes from "@/components/Outcomes";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
+import SmoothScroll from "@/components/SmoothScroll";
 
-// Dynamically import the heavy scroll animation section (client-side only)
+// Dynamically import heavy / client-only components
 const ScrollAnimation = dynamic(() => import("@/components/ScrollAnimation"), {
   ssr: false,
   loading: () => (
-    <div className="relative bg-black" style={{ height: "400vh" }}>
+    <div className="relative bg-black" style={{ height: "800vh" }}>
       <div className="sticky top-0 h-screen flex items-center justify-center">
-        <div className="text-white/20 text-xs uppercase tracking-widest">
-          Loading Animation...
+        <div
+          className="text-white/15 font-mono"
+          style={{ fontSize: "10px", letterSpacing: "0.4em", textTransform: "uppercase" }}
+        >
+          Loading…
         </div>
       </div>
     </div>
   ),
 });
 
+const Cursor = dynamic(() => import("@/components/Cursor"), { ssr: false });
+
 export default function Home() {
   return (
-    <main className="bg-black min-h-screen">
-      <Navigation />
-      <Hero />
-      <ScrollAnimation />
-      <Problem />
-      <WhatRevamplyDoes />
-      <Founder />
-      <TechPlatforms />
-      <RevampMethod />
-      <Playbook />
-      <Services />
-      <IdealClients />
-      <Outcomes />
-      <FinalCTA />
-      <Footer />
-    </main>
+    <SmoothScroll>
+      <Cursor />
+      <main className="bg-black min-h-screen">
+        <Navigation />
+        <Hero />
+        <ScrollAnimation />
+        <Problem />
+        <WhatRevamplyDoes />
+        <Founder />
+        <TechPlatforms />
+        <RevampMethod />
+        <Playbook />
+        <Services />
+        <IdealClients />
+        <Outcomes />
+        <FinalCTA />
+        <Footer />
+      </main>
+    </SmoothScroll>
   );
 }
