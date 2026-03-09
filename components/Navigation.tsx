@@ -2,18 +2,25 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-const navLinks = [
-  { label: "Home", href: "#hero" },
+const pageLinks = [
+  { label: "Home", href: "/" },
+  { label: "Operational Assessment", href: "/operational-assessment" },
+  { label: "Exit Readiness", href: "/modernizing-businesses-before-exit" },
+];
+
+const anchorLinks = [
   { label: "REVAMP Method", href: "#revamp-method" },
-  { label: "Assessment", href: "#services" },
-  { label: "Playbook", href: "#playbook" },
   { label: "About", href: "#founder" },
 ];
 
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,8 +30,12 @@ export default function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleNav = (href: string) => {
+  const handleAnchorNav = (href: string) => {
     setMenuOpen(false);
+    if (!isHomePage) {
+      window.location.href = "/" + href;
+      return;
+    }
     const el = document.querySelector(href);
     if (el) {
       el.scrollIntoView({ behavior: "smooth" });
@@ -46,10 +57,7 @@ export default function Navigation() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 lg:h-20">
             {/* Logo */}
-            <button
-              onClick={() => handleNav("#hero")}
-              className="flex items-center gap-2 group"
-            >
+            <Link href="/" className="flex items-center gap-2 group">
               <div className="w-8 h-8 rounded-lg bg-accent flex items-center justify-center relative overflow-hidden">
                 <span className="text-white font-black text-sm leading-none">R</span>
                 <div className="absolute inset-0 bg-white/20 translate-x-full group-hover:translate-x-0 transition-transform duration-300 skew-x-12" />
@@ -57,14 +65,24 @@ export default function Navigation() {
               <span className="text-white font-bold text-lg tracking-tight">
                 Revamply
               </span>
-            </button>
+            </Link>
 
             {/* Desktop nav */}
             <div className="hidden lg:flex items-center gap-8">
-              {navLinks.map((link) => (
+              {pageLinks.map((link) => (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className="text-white/60 hover:text-white text-sm font-medium transition-colors duration-200 relative group"
+                >
+                  {link.label}
+                  <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-accent group-hover:w-full transition-all duration-300" />
+                </Link>
+              ))}
+              {anchorLinks.map((link) => (
                 <button
                   key={link.label}
-                  onClick={() => handleNav(link.href)}
+                  onClick={() => handleAnchorNav(link.href)}
                   className="text-white/60 hover:text-white text-sm font-medium transition-colors duration-200 relative group"
                 >
                   {link.label}
@@ -75,13 +93,13 @@ export default function Navigation() {
 
             {/* CTA */}
             <div className="hidden lg:flex items-center gap-4">
-              <button
-                onClick={() => handleNav("#final-cta")}
+              <a
+                href="mailto:hello@revamply.com"
                 className="relative px-5 py-2.5 rounded-full bg-accent text-white text-sm font-semibold overflow-hidden group transition-all duration-300 hover:shadow-[0_0_30px_rgba(59,130,246,0.4)]"
               >
                 <span className="relative z-10">Book a Call</span>
                 <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-              </button>
+              </a>
             </div>
 
             {/* Mobile hamburger */}
@@ -108,27 +126,47 @@ export default function Navigation() {
             transition={{ duration: 0.3 }}
             className="fixed inset-0 z-40 bg-black/95 backdrop-blur-xl flex flex-col items-center justify-center gap-8"
           >
-            {navLinks.map((link, i) => (
-              <motion.button
+            {pageLinks.map((link, i) => (
+              <motion.div
                 key={link.label}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.07 }}
-                onClick={() => handleNav(link.href)}
+              >
+                <Link
+                  href={link.href}
+                  onClick={() => setMenuOpen(false)}
+                  className="text-white text-3xl font-bold hover:text-accent transition-colors block"
+                >
+                  {link.label}
+                </Link>
+              </motion.div>
+            ))}
+            {anchorLinks.map((link, i) => (
+              <motion.button
+                key={link.label}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: (pageLinks.length + i) * 0.07 }}
+                onClick={() => handleAnchorNav(link.href)}
                 className="text-white text-3xl font-bold hover:text-accent transition-colors"
               >
                 {link.label}
               </motion.button>
             ))}
-            <motion.button
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: navLinks.length * 0.07 }}
-              onClick={() => handleNav("#final-cta")}
-              className="mt-4 px-8 py-4 rounded-full bg-accent text-white text-lg font-semibold"
+              transition={{ delay: (pageLinks.length + anchorLinks.length) * 0.07 }}
             >
-              Book a Call
-            </motion.button>
+              <a
+                href="mailto:hello@revamply.com"
+                onClick={() => setMenuOpen(false)}
+                className="mt-4 px-8 py-4 rounded-full bg-accent text-white text-lg font-semibold inline-block"
+              >
+                Book a Call
+              </a>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

@@ -1,31 +1,36 @@
 "use client";
 
+import Link from "next/link";
 
-const footerLinks = {
-  Company: [
-    { label: "About", href: "#founder" },
-    { label: "REVAMP Method", href: "#revamp-method" },
-    { label: "Playbook", href: "#playbook" },
-    { label: "Platforms", href: "#platforms" },
+type FooterLink =
+  | { label: string; href: string; type: "page" }
+  | { label: string; href: string; type: "anchor" }
+  | { label: string; href: string; type: "email" };
+
+const footerLinks: Record<string, FooterLink[]> = {
+  Navigation: [
+    { label: "Home", href: "/", type: "page" },
+    { label: "Operational Assessment", href: "/operational-assessment", type: "page" },
+    { label: "Modernising Businesses Before Exit", href: "/modernizing-businesses-before-exit", type: "page" },
+    { label: "Case Studies", href: "#", type: "anchor" },
+    { label: "About", href: "#founder", type: "anchor" },
+    { label: "Book a Call", href: "#final-cta", type: "anchor" },
   ],
   Services: [
-    { label: "Operational Assessment", href: "#services" },
-    { label: "OS Implementation", href: "#services" },
-    { label: "Ongoing Optimization", href: "#services" },
+    { label: "Operational Assessment", href: "/operational-assessment", type: "page" },
+    { label: "OS Implementation", href: "#services", type: "anchor" },
+    { label: "Ongoing Optimisation", href: "#services", type: "anchor" },
   ],
   Contact: [
-    { label: "Book a Discovery Call", href: "#final-cta" },
-    { label: "Request Assessment", href: "#final-cta" },
-    { label: "hello@revamply.com", href: "mailto:hello@revamply.com" },
+    { label: "Book a Discovery Call", href: "mailto:hello@revamply.com", type: "email" },
+    { label: "Request Assessment", href: "mailto:hello@revamply.com?subject=Operational Assessment Request", type: "email" },
+    { label: "hello@revamply.com", href: "mailto:hello@revamply.com", type: "email" },
   ],
 };
 
 export default function Footer() {
-  const handleNav = (href: string) => {
-    if (href.startsWith("mailto")) {
-      window.location.href = href;
-      return;
-    }
+  const handleAnchorNav = (href: string) => {
+    if (href === "#") return;
     const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
@@ -41,17 +46,19 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             {/* Logo */}
-            <div className="flex items-center gap-2 mb-6">
+            <Link href="/" className="flex items-center gap-2 mb-6 w-fit">
               <div className="w-8 h-8 rounded-lg bg-accent flex items-center justify-center">
                 <span className="text-white font-black text-sm">R</span>
               </div>
               <span className="text-white font-bold text-lg">Revamply</span>
-            </div>
+            </Link>
 
             {/* Tagline */}
-            <p className="text-white/40 text-sm leading-relaxed max-w-xs mb-6">
-              Modern operating systems for established businesses. We redesign the systems that
-              power your business.
+            <p className="text-white/40 text-sm leading-relaxed max-w-xs mb-2">
+              Modern Operating Systems for Established Businesses
+            </p>
+            <p className="text-white/30 text-sm leading-relaxed max-w-xs mb-6">
+              Helping companies redesign the systems that power their operations.
             </p>
 
             {/* Social placeholders */}
@@ -75,12 +82,28 @@ export default function Footer() {
               <ul className="space-y-3">
                 {links.map((link) => (
                   <li key={link.label}>
-                    <button
-                      onClick={() => handleNav(link.href)}
-                      className="text-white/50 hover:text-white text-sm transition-colors duration-200 text-left"
-                    >
-                      {link.label}
-                    </button>
+                    {link.type === "page" ? (
+                      <Link
+                        href={link.href}
+                        className="text-white/50 hover:text-white text-sm transition-colors duration-200"
+                      >
+                        {link.label}
+                      </Link>
+                    ) : link.type === "email" ? (
+                      <a
+                        href={link.href}
+                        className="text-white/50 hover:text-white text-sm transition-colors duration-200"
+                      >
+                        {link.label}
+                      </a>
+                    ) : (
+                      <button
+                        onClick={() => handleAnchorNav(link.href)}
+                        className="text-white/50 hover:text-white text-sm transition-colors duration-200 text-left"
+                      >
+                        {link.label}
+                      </button>
+                    )}
                   </li>
                 ))}
               </ul>
